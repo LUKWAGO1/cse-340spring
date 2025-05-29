@@ -5,23 +5,36 @@ const utilities = {}
  * Constructs the nav HTML unordered list
  ************************** */
 utilities.getNav = async function (req, res, next) {
-  let data = await inventoryModel.getClassifications()
-  let list = "<ul>"
-  list += '<li><a href="/" title="Home page">Home</a></li>'
-  data.rows.forEach((row) => {
-    list += "<li>"
-    list +=
-      '<a href="/inventory/type/' +
-      row.classification_id +
-      '" title="See our inventory of ' +
-      row.classification_name +
-      ' vehicles">' +
-      row.classification_name +
-      "</a>"
-    list += "</li>"
-  })
-  list += "</ul>"
-  return list
+  try {
+    let data = await inventoryModel.getClassifications()
+    if (!data || !data.rows || data.rows.length === 0) {
+      console.warn("No classifications found. Returning fallback navigation.")
+      return '<ul><li><a href="/" title="Home page">Home</a></li></ul>'
+    }
+
+    let list = "<ul>"
+    list += '<li><a href="/" title="Home page">Home</a></li>'
+    data.rows.forEach((row) => {
+      list += "<li>"
+      list +=
+        '<a href="/inventory/type/' +
+        row.classification_id +
+        '" title="See our inventory of ' +
+        row.classification_name +
+        ' vehicles">' +
+        row.classification_name +
+        "</a>"
+      list += "</li>"
+    })
+    list += "</ul>"
+    return list
+  } catch (error) {
+    console.error("Error fetching classifications:", error.message)
+    if (error.message.includes("Connection terminated unexpectedly")) {
+      console.error("The database connection was terminated. Check your database server and connection settings.")
+    }
+    return '<ul><li><a href="/" title="Home page">Home</a></li></ul>'
+  }
 }
 
 /* **************************************

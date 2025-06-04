@@ -1,8 +1,3 @@
---
--- Database: 'cse 340 project', .public schema
--- Assignment 2, Task 2
---
-
 DROP TABLE IF EXISTS public.account;
 DROP TABLE IF EXISTS public.inventory;
 DROP TABLE IF EXISTS public.classification;

@@ -1,23 +1,35 @@
--- Ensure the UPDATE statement references the correct column
-UPDATE public.account
+-- Insert new record for Tony Stark
+INSERT INTO account (account_firstname, account_lastname, account_email, account_password)
+VALUES ('Tony', 'Stark', 'tony@starkent.com', 'Iam1ronM@n');
+-- Update Tony Stark's account_type to Admin
+UPDATE account
 SET account_type = 'Admin'
-WHERE account_first_name = 'Tony' AND account_last_name = 'Stark';
+WHERE account_email = 'tony@starkent.com';
+-- Delete Tony Stark's record from the account table
+DELETE FROM account
+WHERE account_email = 'tony@starkent.com';
 
-DELETE FROM public.account
-WHERE account_id = 1;
+-- Update the GM Hummer description from 'small interiors' to 'a huge interior'
+UPDATE inventory
+SET inv_description = REPLACE(inv_description, 'the small interiors', ' a huge interior')
+WHERE inv_make = 'GM' AND inv_model = 'Hummer';
 
-UPDATE public.inventory
-SET inv_description = 'Do you have 6 kids and like to go offroading? The Hummer gives you a huge interiors with an engine to get you out of any muddy or rocky situation.'
-WHERE inv_id = 10;
+-- Select make and model from inventory and classification name from classification table for "Sport" category
+SELECT 
+    inventory.inv_make, 
+    inventory.inv_model, 
+    classification.classification_name
+FROM 
+    inventory
+INNER JOIN 
+    classification
+ON 
+    inventory.classification_id = classification.classification_id
+WHERE 
+    classification.classification_name = 'Sport';
 
-SELECT REPLACE(inv_description, 'a huge interiors', 'the small interiors') 
-FROM public.inventory 
-WHERE inv_id = 10;
-
-SELECT * FROM public.inventory
-WHERE inv_id = 10;
-
-SELECT i.inv_make, i.inv_model, c.classification_name
-FROM public.inventory i
-INNER JOIN public.classification c ON i.classification_id = c.classification_id
-WHERE c.classification_name = 'Sport';
+-- Remove '/images/vehicles/vehiclesvehicles' from inv_image and inv_thumbnail paths then replacing with /images/vehicles/
+UPDATE inventory
+SET 
+    inv_image = REPLACE(inv_image, '/images/', '/images/vehicles/'),
+    inv_thumbnail = REPLACE(inv_thumbnail, '/images/', '/images/vehicles/');

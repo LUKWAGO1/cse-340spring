@@ -1,5 +1,4 @@
 /******* Change Box Model ***************/
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 *,
 *:before,
 *:after {
@@ -231,15 +230,6 @@ body {
     cursor: pointer;
     font-weight: bold;
 }
-textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    font-size: 1em;
-    font-family: 'Arial', sans-serif;
-    resize: vertical;
-  }
 
 .form-container button:hover {
     background-color: #bdc3c7;
@@ -253,7 +243,6 @@ textarea {
 .form-container a:hover {
     text-decoration: underline;
 }
-
 
 /******** Footer ********/
 .footer {
@@ -325,43 +314,15 @@ textarea {
         margin-left: 10px;
     }
 }
- 
-.flash-message {
-    color: red;
-    font-weight: bold;
-  }
-  
-  form {
-    width: 250px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background: #f9f9f9;
-  }
-  
-  label {
-    display: block;
-    margin-top: 10px;
-  }
-  
-  input {
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
     width: 100%;
+  }
+  
+  td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
     padding: 8px;
-    margin-top: 5px;
   }
-  
-  button {
-    width: 100%;
-    padding: 10px;
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    margin-top: 15px;
-  }
-  
-  button:hover {
-    background-color: #0056b3;
-  }
-  

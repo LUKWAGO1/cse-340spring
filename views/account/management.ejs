@@ -1,15 +1,15 @@
 <section class="frame">
-  <h1>Account Management</h1>
+    <h1>Account Management</h1>
 
-  <%- messages() %> <!-- Display flash messages -->
+    <%- messages() %> <!-- Display flash messages -->
 
-  <% if (errors) { %>
-      <ul class="notice">
-          <% errors.forEach(error => { %>
-              <li><%= error.msg %></li>
-          <% }) %>
-      </ul>
-  <% } %>
+    <% if (errors) { %>
+        <ul class="notice">
+            <% errors.forEach(error => { %>
+                <li><%= error.msg %></li>
+            <% }) %>
+        </ul>
+    <% } %>
 
-  <p>You're logged in.</p>
+    <p>You're logged in.</p>
 </section>

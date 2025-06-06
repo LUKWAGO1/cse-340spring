@@ -18,8 +18,8 @@ router.get("/type/:classificationId", utilities.handleErrors(invController.build
 // Route to get inventory as JSON
 router.get("/getInventory/:classification_id", utilities.handleErrors(invController.getInventoryJSON));
 
-// ✅ Route to build vehicle detail page with reviews
-router.get("/detail/:id", utilities.handleErrors(invController.buildVehicleDetail));
+// Route to build vehicle page by vehicleId
+router.get("/detail/:invId", utilities.handleErrors(invController.buildByInvId));
 
 // ==========================
 // Restricted Routes - employee/admin
